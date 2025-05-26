@@ -1,0 +1,61 @@
+﻿@model NguyenDucBinh_2021603555.Models.HocSinh
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Ban co chac chan muon xoa khong?</h3>
+<div>
+    <h4>Thong tin hoc sinh</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           TEN LOP
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LopHoc.tenlop)
+        </dd>
+
+        <dt>
+            Ho Ten
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hoten)
+        </dd>
+
+        <dt>
+            Anh du thi
+        </dt>
+
+        <dd>
+            @{ 
+                string Path = "~/Images/" + Model.anhduthi;
+            }
+            <img src="@Url.Content(Path)" height="150" width="200" alt="Anh" />
+        </dd>
+
+        <dt>
+            Diem thi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diemthi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoa" class="btn btn-default" /> |
+            @Html.ActionLink("Tro ve", "Index")
+        </div>
+    }
+</div>
+@if(ViewBag.err != null)
+            {
+                <div class="bg-info">@ViewBag.err</div>
+            }

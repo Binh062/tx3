@@ -1,0 +1,59 @@
+﻿@model IEnumerable<NguyenDucBinh_2021603555.Models.HocSinh>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<button class="btn btn-outline-info">
+    @Html.ActionLink("Them du lieu", "ThemDuLieu")
+</button>
+@using (Html.BeginForm())
+{
+    @Html.Label("Tim kiem theo ten")
+    @Html.TextBox("tim");
+    <input type="submit" value="Tim" />
+}
+<br />
+@using (Html.BeginForm())
+{
+    @Html.Label("Tim kiem theo sbd")
+    @Html.TextBox("sbd");
+    <input type="submit" value="Tim" />
+}
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            @{
+                string Path = "~/Images/" + item.anhduthi;
+            }
+            <div class="card-body img-thumbnail">
+                <div class="card-img-top">
+                    <img src="@Url.Content(Path)" height="150" width="200" alt="Anh" />
+                </div>
+                <div class="card-title text-center fw-bold">@item.sbd</div>
+                <div class="card-title text-center">@item.hoten</div>
+                <div class="card-title text-center">@item.diemthi</div>
+
+                <div class="card-footer">
+                    <button class="btn btn-outline-info">
+                        @Html.ActionLink("Sua du lieu", "Edit", new { id = item.sbd })
+                    </button>
+                    <button class="btn btn-outline-info">
+                        @Html.ActionLink("Details", "Details", new { id = item.sbd })
+                    </button>
+                    <button class="btn btn-outline-info">
+                        @Html.ActionLink("Xoa du lieu", "XoaDuLieu", new { id = item.sbd })
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<style>
+    button a {
+        text-decoration: none;
+        color: #0094ff;
+        font-weight: bold;
+    }
+</style>
