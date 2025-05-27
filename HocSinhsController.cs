@@ -113,7 +113,7 @@ namespace NguyenDucBinh_2021603555.Controllers
                 }
                 db.Entry(hocSinh).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Xemdanhsach");
             }
             ViewBag.malop = new SelectList(db.LopHocs, "malop", "tenlop", hocSinh.malop);
             return View(hocSinh);
@@ -149,7 +149,7 @@ namespace NguyenDucBinh_2021603555.Controllers
                 ViewBag.err="Co loi xay ra" + ex.Message;
                 return View(hocSinh);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Xemdanhsach");
         }
 
         protected override void Dispose(bool disposing)
